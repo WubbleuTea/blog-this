@@ -1,8 +1,29 @@
-<h1>Blog This</h1>
-<un>
-    <li>
-        <a href="/dashboard">dashboard</a>
-        <button>Logout</button>
-        <a href="/login">Login</a>
-    </li>
-</un>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just Tech News</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <header>
+        <h1>Blog This</h1>
+        <un>
+            <li>
+                <a href="/dashboard">dashboard</a>
+                <button>Logout</button>
+                <a href="/login">Login</a>
+            </li>
+        </un>
+    </header>
+    <main>
+        {{ body }}
+    </main>
+    
+    <footer>
+        {{!-- current year to find --}}
+        <p>&copy current year WubbleTea</p>
+    </footer>
+</body>
