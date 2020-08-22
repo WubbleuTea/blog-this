@@ -21,6 +21,16 @@ User.init(
             validate: {
                 len: [8,16]
             }
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            // there cannot be any duplicate email values in this table
+            unique: true,
+            // if allowNull is set to false, we can run our data through validators before creating the table data
+            validate: {
+                isEmail: true
+            }
         }
     },
     {
