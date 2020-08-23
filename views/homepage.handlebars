@@ -1,5 +1,15 @@
-<article class="post">
-    <div class="title">
-        <a href="/post/:id" target="_blank">{{title}}</a>
-    </div>
-</article>
+{{#each posts}}
+
+    <article class="post">
+        <div class="title">
+            <h2><a href="/post/:id" target="_blank">{{title}}</a></h2>
+        </div>
+        <div>
+            <p>By {{user.username}} on {{created_at}} and has {{comment_count}} comments</p>
+        </div>
+        <div>
+            <p>{{post_text}}</p>
+        </div>
+    </article>
+
+{{/each}}

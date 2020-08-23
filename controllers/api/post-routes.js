@@ -23,9 +23,21 @@ router.get('/:id', (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id
-        }
-        //may need more here once we put comments/user
-
+        },
+        include: [
+            {
+              model: Comment,
+              attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+              include: {
+                model: User,
+                attributes: ['username']
+              }
+            },
+            {
+              model: User,
+              attributes: ['username']
+            }
+        ]
     })
     .then(dbPostData => {
         //need to come back for the session
@@ -41,7 +53,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
-        post_url: req.body.post_url,
+        post_text: req.body.post_text,
         user_id: req.body.user_id
     })
     .then(dbPostData => {
@@ -59,7 +71,7 @@ router.put('/:id', (req,res) => {
     Post.update(
         {
             title: req.body.title,
-            post_url: req.body.post_url
+            post_text: req.body.post_text
         }, 
         {
             where: {

@@ -41,8 +41,13 @@ router.post('/', (req, res) => {
         password: req.body.password
     })
     .then(dbUserData => {
-        //need to come back for the session
-            res.json(dbUserData);
+        req.session.save(() => {
+          req.session.user_id = dbUserData.id;
+          req.session.username = dbUserData.username;
+          req.session.loggedIn = true;
+      
+          res.json(dbUserData);
+        });
     })
     .catch(err => {
         console.log(err);
@@ -50,9 +55,48 @@ router.post('/', (req, res) => {
     });
 });
 
-// will need a login post
+// api/users/login login post
+router.post('/login', (req, res) => {
+    console.log
+    User.findOne({
+        where: {
+            username: req.body.username
+        }
+    }).then(dbUserData => {
+        if (!dbUserData) {
+          res.status(400).json({ message: 'No user with that username address!' });
+          return;
+        }
+    
+        const validPassword = dbUserData.checkPassword(req.body.password);
+    
+        if (!validPassword) {
+          res.status(400).json({ message: 'Incorrect password!' });
+          return;
+        }
+    
+        req.session.save(() => {
+          // declare session variables
+          req.session.user_id = dbUserData.id;
+          req.session.username = dbUserData.username;
+          req.session.loggedIn = true;
+    
+          res.json({ user: dbUserData, message: 'You are now logged in!' });
+        });
+    });
+});
 
 // will need a logout post
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+          res.status(204).end();
+        });
+      }
+      else {
+        res.status(404).end();
+      }
+})
 
 // api/users/:id update user
 router.put('/:id', (req,res) => {
