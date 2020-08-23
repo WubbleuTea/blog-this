@@ -6,7 +6,16 @@ const { User, Comment, Post } = require('../../models');
 // api/comments all comments
 router.get('/', (req, res) => {
     Comment.findAll({
-        // include post and user
+        include: [
+            {
+                model: User,
+                attributes: ['username']
+            },
+            {
+                model: Post,
+                attributes: ['title']
+            }
+        ]
     })
     .then(dbCommentData => {
         res.json(dbCommentData)
