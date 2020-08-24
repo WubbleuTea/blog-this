@@ -79,4 +79,15 @@ router.get('/dashboard', (req, res) => {
     });
 });
 
+router.get('/newpost', (req, res) => {
+    if (req.session.loggedIn) {
+        res.render('newpost');
+        ;
+        console.log('Already logged in')
+        return;
+    }
+    
+    res.redirect('/login')
+});
+
 module.exports = router;
