@@ -1,4 +1,20 @@
-<a href="/dashboard">+ Add a new post</a>
+{{#each posts}}
+
+    <article class="post">
+        <div class="title">
+            <h2><a href="/post/:id" target="_blank">{{title}}</a></h2>
+        </div>
+        <div>
+            <p>{{created_at}} and has {{comment_count}} comments</p>
+        </div>
+        <div>
+            <p>{{post_text}}</p>
+        </div>
+    </article>
+
+{{/each}}
+
+<a href="/dashboard"> + Add a new post</a>
 
 
 {{!-- conditional to show the button if they have just come to this page and if they click the button show the form for the new post --}}
