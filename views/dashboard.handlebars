@@ -2,7 +2,7 @@
 
     <article class="post">
         <div class="title">
-            <h2><a href="/post/:id" target="_blank">{{title}}</a></h2>
+            <h2><a href="/edit/{{post.id}}" id="edit-post">{{title}}</a></h2>
         </div>
         <div>
             <p>{{created_at}} and has {{comment_count}} comments</p>
@@ -17,4 +17,3 @@
 <button id="new-post"> + Add a new post</button>
 
 <script src="/javascript/dashboard.js"></script>
-{{!-- conditional to show the button if they have just come to this page and if they click the button show the form for the new post --}}

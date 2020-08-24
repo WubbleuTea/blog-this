@@ -82,8 +82,15 @@ router.get('/dashboard', (req, res) => {
 router.get('/newpost', (req, res) => {
     if (req.session.loggedIn) {
         res.render('newpost');
-        ;
-        console.log('Already logged in')
+        return;
+    }
+    
+    res.redirect('/login')
+});
+
+router.get('/editpost/:id', (req, res) => {
+    if (req.session.loggedIn) {
+        res.render('editpost');
         return;
     }
     

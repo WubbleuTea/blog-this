@@ -1,0 +1,14 @@
+<form class="edit-post-form">
+    <div>
+        <label for="title">Post Title:</label>
+        <input name="title" type="text" id="title" value="{{title}}">
+    </div>
+    <div>
+        <label for="text">Post: </label>
+        <input name="text" type="textarea" id="text" value="{{post_text}}"/>
+    </div>
+    <button type="submit" id="edit">Post this edit</button>
+    <button type="submit" id="delete">Delete this post</button>
+</form>
+
+<script src="/javascript/editpost.js"></script>
