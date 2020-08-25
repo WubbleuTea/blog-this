@@ -1,19 +1,20 @@
-{{#each posts}}
+{{#if posts.length}}
+    {{#each posts}}
 
-    <article class="post">
-        <div class="title">
-            <h2><a href="/edit/{{post.id}}" id="edit-post">{{title}}</a></h2>
-        </div>
-        <div>
-            <p>{{created_at}} and has {{comment_count}} comments</p>
-        </div>
-        <div>
-            <p>{{post_text}}</p>
-        </div>
-    </article>
+        <article class="post">
+            <div class="title">
+                <h2><a href="/edit/{{id}}" id="edit-post">{{title}}</a></h2>
+            </div>
+            <div>
+                <p>{{created_at}} and has {{comment_count}} comments</p>
+            </div>
+            <div>
+                <p>{{post_text}}</p>
+            </div>
+        </article>
 
-{{/each}}
-
+    {{/each}}
+{{/if}}
 <button id="new-post"> + Add a new post</button>
 
 <script src="/javascript/dashboard.js"></script>
