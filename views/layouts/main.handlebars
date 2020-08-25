@@ -13,9 +13,12 @@
             <ul>
                 <li>
                     <button><a href="/">Home</a></button>
-                    <button><a href="/dashboard">Dashboard</a></button>
-                    <button id="logout">Logout</button>
-                   <button><a href="/login">Login</a></button>
+                    {{#if loggedIn}}
+                        <button><a href="/dashboard">Dashboard</a></button>
+                        <button id="logout">Logout</button>
+                    {{else}}
+                        <button><a href="/login">Login</a></button>
+                    {{/if}}
                 </li>
             </ul>
         </header>
@@ -27,8 +30,9 @@
             {{!-- current year to find --}}
             <p>&copy current year wubbleTea</p>
         </footer>
-
+    {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
+    {{/if}}
     </body>
 
 </html>
