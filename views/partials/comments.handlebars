@@ -1,0 +1,13 @@
+<div class="comments">
+    {{#each this}}
+    <section class="comment card bg-success m-1">
+        <div class="text card p-1 bg-primary text-white">
+            {{comment_text}}
+        </div>
+        <div class="text-white">
+             <h5>by {{user.username}}</h5> 
+             <p>on {{created_at}}</p>
+        </div>
+    </section>
+    {{/each}}
+</div>

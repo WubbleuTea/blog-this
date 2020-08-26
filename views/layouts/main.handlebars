@@ -8,25 +8,27 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     </head>
     <body>
-        <header>
-            <h1>Blog This</h1>
-            <ul>
-                <li>
-                    <button><a href="/">Home</a></button>
-                    {{#if loggedIn}}
-                        <button><a href="/dashboard">Dashboard</a></button>
-                        <button id="logout">Logout</button>
-                    {{else}}
-                        <button><a href="/login">Login</a></button>
-                    {{/if}}
-                </li>
-            </ul>
-        </header>
+        {{!-- <header> --}}
+            <nav class="navbar navbar-dark text-white bg-primary">
+                <h1>Blog This</h1>
+                <ul class="list-group">
+                    <li>
+                        <a class="btn btn-success" href="/">Home</a>
+                        {{#if loggedIn}}
+                            <a class="btn btn-success" href="/dashboard">Dashboard</a>
+                            <button class="btn btn-success" id="logout">Logout</button>
+                        {{else}}
+                            <a class="btn btn-success" href="/login">Login</a>
+                        {{/if}}
+                    </li>
+                </ul>
+            </nav>
+        {{!-- </header> --}}
         <main>
             {{{ body }}}
         </main>
         
-        <footer>
+        <footer class="align-items-center">
             {{!-- current year to find --}}
             <p>&copy current year wubbleTea</p>
         </footer>
