@@ -1,15 +1,24 @@
-<h2>Edit Your Post</h2>
-<form class="edit-post-form">
-    <div>
-        <label for="title">Post Title:</label>
-        <input name="title" type="text" id="title" value="{{post.title}}">
+<div class="card bg-success mb-3">
+    <div class="d-flex justify-content-center">
+        <h2 class=" m-3">Edit Your Post</h2>
     </div>
-    <div>
-        <label for="text">Post: </label>
-        <input name="text" type="textarea" id="text" value="{{post.post_text}}"/>
-    </div>
-    <button type="submit" id="edit">Post this edit</button>
-    <button type="submit" id="delete">Delete this post</button>
-</form>
+</div>
+
+<div class="d-flex justify-content-center align-items-center">
+    <form class="edit-post-form card bg-primary m-3 p-3 shadow-lg">
+        <div>
+            <label for="title">Title: </label>
+            <input name="title" type="text" id="title" value="{{post.title}}"/>
+        </div>
+        <div>
+            <label for="text">Post: </label>
+            <textarea name="text" type="textarea" id="text">{{post.post_text}}</textarea>
+        </div>
+        <div class="d-flex">
+            <button type="submit" class="btn bg-success col-5 shadow-lg" id="edit">Save</button>
+            <button type="submit" class="btn bg-danger col-5 shadow-lg ml-auto" id="delete">Delete</button>
+        </div>
+    </form>
+</div>
 
 <script src="/javascript/editpost.js"></script>

@@ -1,34 +1,32 @@
-<article class="post card bg-light align-items-center">
-    <div class="title">
+<article class="post">
+    <div class="title card bg-success align-items-center">
         <h2>{{post.title}}</h2>
     </div>
-    <div>
-        <p>By {{post.user.username}} on {{post.created_at}}</p>
-    </div>
-    <div>
-        <p>{{post.post_text}}</p>
+    <div class="card bg-primary align-items-center">
+        <p class="text-white">By {{post.user.username}} on {{post.created_at}}</p>
+        <h2 class="text-white">{{post.post_text}}</h2>
     </div>
 </article>
 
 
 <div class="d-flex justify-content-around bg-light">
 {{#if post.comments}}
-    <div class="card col-6 m-1 p-1 justify-content-center align-items-center">
+    <div class="card col-6 m-2 p-1 justify-content-center align-items-center">
         <h4>Comments</h4>
         {{> comments post.comments }}
     </div> 
 {{else}}
-    <div class="card col-6 m-1 p-1 justify-content-center align-items-center">
+    <div class="card col-6 m-2 p-1 justify-content-center align-items-center">
         <h3>No commments on this post</h3>
     </div> 
 {{/if}}       
-    <div class="card col-6 m-1 p-1 justify-content-center align-items-center">
+    <div class="card col-6 m-2 p-1 justify-content-center align-items-center">
         <h4>Add a comment:</h4>
         <form class="comment-form">
             <div>
                 <textarea type="textarea" id="comment-text"></textarea>
             </div>
-            <button type="submit" id="submit-comment">Add your comment</button>
+            <button type="submit" class="btn bg-primary" id="submit-comment">Add your comment</button>
         </form>
     </div>
 </div>

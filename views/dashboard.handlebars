@@ -1,20 +1,24 @@
+<div class="card bg-success mb-3">
+    <div class="d-flex justify-content-center">
+        <h2 class=" m-3">Your posts</h2>
+    </div>
+</div>
 {{#if posts.length}}
     {{#each posts}}
 
-        <article class="post">
-            <div class="title">
-                <h2><a href="/edit/{{id}}" id="edit-post">{{title}}</a></h2>
+        <article class="post card bg-success m-1">
+            <div class="title card bg-primary p-2">
+                <h2><a href="/edit/{{id}}" id="edit-post" class="text-white">{{title}}</a></h2>
+                <p class="text-white">{{created_at}} and has {{comment_count}} comments</p>
             </div>
-            <div>
-                <p>{{created_at}} and has {{comment_count}} comments</p>
-            </div>
-            <div>
-                <p>{{post_text}}</p>
+            <div class="p-2">
+                <h3>{{post_text}}</h3>
             </div>
         </article>
 
     {{/each}}
 {{/if}}
-<button id="new-post"> + Add a new post</button>
-
+<div class="d-flex justify-content-around m-3">
+    <button id="new-post" class=" btn bg-success" > + Add a new post</button>
+</div>  
 <script src="/javascript/dashboard.js"></script>

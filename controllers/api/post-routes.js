@@ -95,21 +95,27 @@ router.put('/:id', (req,res) => {
 // api/posts/:id delete a user
 router.delete('/:id', (req, res) => {
 // will need to delete all comments
-    Post.destroy({
-        where : {
-            id : req.params.id
+    Comment.destroy({
+        where: {
+        post_id: req.params.id
         }
-    })
-    .then((dbPostData) => {
-        if (!dbPostData) {
-            res.status(404).json({ message: 'No user found with this id' });
-            return;
-        }
-        res.json(dbPostData);
-    })
-    .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
+    }).then(() => {
+        Post.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then((dbPostData) => {
+            if (!dbPostData) {
+                res.status(404).json({ message: 'No user found with this id' });
+                return;
+            }
+            res.json(dbPostData);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
     });
 });
 

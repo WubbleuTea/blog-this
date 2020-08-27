@@ -21,7 +21,10 @@ router.get('/', (req, res) => {
     })
         .then(dbPostData => {
             const posts = dbPostData.map(post => post.get({ plain: true }));
-            res.render('homepage', { posts });
+            res.render('homepage', { 
+                posts, 
+                loggedIn: req.session.loggedIn 
+            });
         })
         .catch(err => {
             console.log(err);
@@ -81,7 +84,9 @@ router.get('/dashboard', (req, res) => {
 
 router.get('/newpost', (req, res) => {
     if (req.session.loggedIn) {
-        res.render('newpost');
+        res.render('newpost', { 
+            loggedIn: req.session.loggedIn
+        });
         return;
     }
     
@@ -119,7 +124,7 @@ router.get('/edit/:id', (req, res) => {
         //pass data to template
         res.render('editpost', {
             post,
-            loggedIn: true
+            loggedIn: req.session.loggedIn
         });
     })
     .catch(err => {
@@ -167,7 +172,7 @@ router.get('/post/:id', (req, res) => {
         //pass data to template
         res.render('postcomments', {
             post,
-            loggedIn: true
+            loggedIn: req.session.loggedIn
         });
     })
     .catch(err => {
