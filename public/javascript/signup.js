@@ -5,8 +5,11 @@ async function signupFormHandler(event) {
     const username = document.querySelector('#username').value
     const password = document.querySelector('#password').value
     const email = document.querySelector('#email').value
+    const passwordVerify = document.querySelector('#password-verify').value
 
-    if (username && email && password) {
+    console.log(password === passwordVerify)
+
+    if (username && email && password && passwordVerify === password) {
         const response = await fetch('/api/users', {
             method: 'POST',
             body: JSON.stringify({
@@ -17,10 +20,24 @@ async function signupFormHandler(event) {
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {
-            console.log('success');
-        } else {
-            alert(response.statusText)
+            const loginResponse = await fetch('/api/users/login', {
+                method: 'POST',
+                body: JSON.stringify({
+                    username,
+                    password
+                }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+                if (loginResponse.ok){
+                document.location.replace('/dashboard');
+                } else {
+                    alert(response.statusText)
+                }
         }
+    }  else if (password !== passwordVerify) {
+        alert('Your passwords do not match! Could not sign you up');
+    } else {
+        alert(response.statusText)
     }
 }
 
