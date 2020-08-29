@@ -1,6 +1,10 @@
 <div class="card bg-success mb-3">
     <div class="d-flex justify-content-center">
-        <h2 class=" m-3">{{posts.username}}'s posts</h2>
+        {{#if posts.length}}
+        <h2 class="m-3">{{posts.0.user.username}}'s Dashboard</h2>
+        {{else}}
+        <h2 class="m-3">Your Dashboard</h2>
+        {{/if}}
     </div>
 </div>
 {{#if posts.length}}

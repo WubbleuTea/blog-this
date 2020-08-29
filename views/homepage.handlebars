@@ -1,6 +1,6 @@
 <div class="card bg-success mb-3">
     <div class="d-flex justify-content-center">
-        <h2 class=" m-3">Homepage</h2>
+        <h2 class="m-3">Homepage</h2>
     </div>
 </div>
 {{#each posts}}
@@ -8,10 +8,10 @@
     <article class="post card bg-success m-1">
         <div class="title card bg-primary p-2">
             <h2><a href="/post/{{id}}" class="text-white">{{title}}</a></h2>
-            <p>Created by {{user.username}} on {{format_date created_at}} and has {{comment_count}} {{format_plural "comment" comment_count}}.</p>
+            <p class="text-white">Created by {{user.username}} on {{format_date created_at}} and has {{comment_count}} {{format_plural "comment" comment_count}}.</p>
         </div>
-        <div>
-            <p>{{post_text}}</p>
+        <div class="p-2">
+            <h3>{{post_text}}</h3>
         </div>
     </article>
 
