@@ -1,21 +1,3 @@
-async function checkUniqueUsername() {
-
-    const username = document.querySelector('#username').value
-
-    
-    const response = await fetch('/api/users', {
-        method: 'GET',
-        
-        headers: { 'Content-Type': 'application/json' }
-    })
-    response.forEach(user => {
-        console.log(user.username)
-        if (user.username = username) {
-            return false
-        }
-    })
-       
-}
 
 // recieve username/password/email and post it to database
 async function signupFormHandler(event) {
@@ -26,9 +8,12 @@ async function signupFormHandler(event) {
     const email = document.querySelector('#email').value
     const passwordVerify = document.querySelector('#password-verify').value
 
+    if (password !== passwordVerify) {
+        alert('Your passwords do not match! Could not sign you up');
+        return;
+    } 
 
-
-    if (username && email && password && passwordVerify === password && checkUniqueUsername) {
+    if (username && email && password && passwordVerify === password) {
         const response = await fetch('/api/users', {
             method: 'POST',
             body: JSON.stringify({
@@ -53,12 +38,7 @@ async function signupFormHandler(event) {
                     alert(response.statusText)
                 }
         }
-    }  else if (password !== passwordVerify) {
-        alert('Your passwords do not match! Could not sign you up');
-    } else if (!checkUniqueUsername) {
-        alert('Username is already taken')
-    }
-     else {
+    } else {
         alert(response.statusText)
     }
 }
