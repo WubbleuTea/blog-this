@@ -2,6 +2,8 @@ const express = require('express');
 const routes = require('./controllers');
 const path = require('path');
 const helpers = require('./utils/helpers');
+const session = require('express-session');
+
 // starts the express connection
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -10,14 +12,17 @@ const sequelize = require('./config/connection');
 const exphbs = require('express-handlebars');
 // helpers runs the helpers in the handlebars (without it the helpers cant run)
 const hbs = exphbs.create({ helpers });
-const session = require('express-session');
+
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 // creates the session
 const sess = {
     secret: 'This is a secret',
-    cookie: {},
+    cookie: {
+        maxAge: 1000 * 60 * 30
+    },
     resave: false,
     saveUninitialized: true,
+
     store: new SequelizeStore({
         db: sequelize
     })
