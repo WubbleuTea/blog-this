@@ -8,7 +8,7 @@
     <article class="post card bg-success m-1">
         <div class="title card bg-primary p-2">
             <h2><a href="/post/{{id}}" class="text-white">{{title}}</a></h2>
-            <p>By {{user.username}} on {{created_at}} and has {{comment_count}} comments</p>
+            <p>Created by {{user.username}} on {{format_date created_at}} and has {{comment_count}} {{format_plural "comment" comment_count}}.</p>
         </div>
         <div>
             <p>{{post_text}}</p>
