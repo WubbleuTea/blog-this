@@ -9,5 +9,8 @@ module.exports = {
         }
     
         return word.toLowerCase();
+    },
+    current_year: () => {
+        return `${new Date().getFullYear()}`;
     }
 }
