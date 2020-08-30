@@ -9,15 +9,15 @@ The image of the home screen takes you to the application:
 
 ```https://desolate-dawn-85304.herokuapp.com/```
 
-The application has a sign-up [Sign-up](/public/assets/images/signup.png)
+The application has a sign-up [!Sign-up](/public/assets/images/signup.png)
 
-and log-in feature [Log-in](/public/assets/images/login.png)
+and log-in feature [!Log-in](/public/assets/images/login.png)
 
 to store user posts.
 
-The application also includes a dashboard where the user can add posts,[Dashboard](/public/assets/images/dashboard.png)
+The application also includes a dashboard where the user can add posts,[!Dashboard](/public/assets/images/dashboard.png)
 
-and an area to create and view comments on a post. [comments](/public/assets/images/comments.png)
+and an area to create and view comments on a post. [!Comments](/public/assets/images/comments.png)
 
 ## Table of Contents  
 [Installation](#Installation)  
